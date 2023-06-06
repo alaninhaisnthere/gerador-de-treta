@@ -1,32 +1,53 @@
-import Image from 'next/image'
-import Logo from '../assets/logo.svg'
-import { useState, useEffect } from 'react';
-import { getRandomWord } from '../utils/api';
-
+import Image from 'next/image';
+import Axios from 'axios';
+import Logo from '../assets/logo.svg';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
-  const [firstWord, setFirstWord] = useState('');
-  const [secondWord, setSecondWord] = useState('');
+  const [randomFirstWord, setrandomFirstWord] = useState('');
+  const [randomSecondWord, setrandomSecondWord] = useState('');
+
 
   useEffect(() => {
-    async function fetchRandomWords() {
-      const word1 = await getRandomWord();
-      const word2 = await getRandomWord();
-      setFirstWord(word1);
-      setSecondWord(word2);
-    }
-
-    fetchRandomWords();
+    fetchFirstWord();
   }, []);
+
+  const fetchFirstWord = async () => {
+    try {
+      const response = await
+        Axios.get('http://localhost:3001/palavra');
+      setrandomFirstWord(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchSecondWord();
+  }, []);
+
+  const fetchSecondWord = async () => {
+    try {
+      const response = await
+        Axios.get('http://localhost:3001/palavra');
+      setrandomSecondWord(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div className="bg-gray-900 h-screen flex justify-around items-center">
       <div className="flex">
-        <div>
+        {/* <div>
           <Image src={Logo} alt="twitter logo" className="h-20" />
-        </div>
+        </div> */}
         <div className="font-roboto text-lg text-white">
-          Todos sabem que <h1>{firstWord}</h1> é totalmente incompatível com <h1>{secondWord}</h1>! Mas vocês não estão preparados pra isso.
+          Todos sabem que
+          <h1>{randomFirstWord}</h1>
+          é totalmente incompatível com
+          <h1>{randomSecondWord}</h1>
+          Mas vocês não estão preparados pra isso.
         </div>
       </div>
     </div>
