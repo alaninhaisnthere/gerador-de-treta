@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.0.0-rc.1",
+    "nodemon": "^2.0.20",
+    "react": "^18.2.0"
+  },
+  "name": "lista-de-compras",
+  "description": "Parabéns a todas por chegar até aqui! Reconhecemos o seu esforço e dedicação e desejamos sorte na última etapa do processo e dos núcleos.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "mocha": "^10.1.0"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/alaninhaisnthere/lista-de-compras.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/alaninhaisnthere/lista-de-compras/issues"
+  },
+  "homepage": "https://gitlab.com/alaninhaisnthere/lista-de-compras#readme"
+}
