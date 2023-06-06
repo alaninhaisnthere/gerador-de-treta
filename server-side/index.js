@@ -18,8 +18,11 @@ app.get("/palavra", (req, res) => {
   db.query(mysql, (err, result) => {
     if (err) {
       console.log(err);
+      res.status(500).send("Erro ao obter a palavra.");
     } else {
-      res.send(result);
+      console.log(result);
+      const palavra = result[0].palavra;
+      res.send(palavra);
     }
   });
 });
